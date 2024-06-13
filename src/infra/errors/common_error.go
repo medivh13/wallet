@@ -1,11 +1,5 @@
 package errors
 
-/*
- * Author      : Jody (jody.almaida@gmail.com)
- * Modifier    :
- * Domain      : wallet
- */
-
 import (
 	"fmt"
 	"strings"

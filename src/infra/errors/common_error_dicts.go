@@ -1,12 +1,9 @@
 package errors
 
-/*
- * Author      : Jody (jody.almaida@gmail.com)
- * Modifier    :
- * Domain      : wallet
- */
+
 
 const (
+	// code team internal error
 	UNKNOWN_ERROR              ErrorCode = 0
 	DATA_INVALID               ErrorCode = 4001
 	FAILED_RETRIEVE_DATA       ErrorCode = 4002
