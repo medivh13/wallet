@@ -1,21 +1,20 @@
 package errors
 
-
-
+// code for team internal error
 const (
-	// code team internal error
-	UNKNOWN_ERROR              ErrorCode = 0
-	DATA_INVALID               ErrorCode = 4001
-	FAILED_RETRIEVE_DATA       ErrorCode = 4002
-	STATUS_PAGE_NOT_FOUND      ErrorCode = 4003
-	INVALID_HEADER_X_API_KEY   ErrorCode = 4004
-	UNAUTHORIZED               ErrorCode = 4005
-	FAILED_CREATE_DATA         ErrorCode = 4006
-	USER_ALREADY_EXIST         ErrorCode = 4007
-	INVALID_AMOUNT             ErrorCode = 4008
-	DESTINATION_USER_NOT_FOUND ErrorCode = 4009
-	INSUFICIENT_BALANCE        ErrorCode = 4010
-	TO_OWN_ACCOUNT             ErrorCode = 4011
+	DATA_INVALID               ErrorCode = 1001
+	INVALID_AMOUNT             ErrorCode = 1002
+	STATUS_PAGE_NOT_FOUND      ErrorCode = 1003
+	UNAUTHORIZED               ErrorCode = 1004
+	USER_ALREADY_EXIST         ErrorCode = 1005
+	DESTINATION_USER_NOT_FOUND ErrorCode = 1006
+	INSUFICIENT_BALANCE        ErrorCode = 1007
+	TO_OWN_ACCOUNT             ErrorCode = 1008
+
+	// server error
+	UNKNOWN_ERROR        ErrorCode = 2000
+	FAILED_CREATE_DATA   ErrorCode = 2001
+	FAILED_RETRIEVE_DATA ErrorCode = 2002
 )
 
 var errorCodes = map[ErrorCode]*CommonError{

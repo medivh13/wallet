@@ -18,8 +18,8 @@ func (dto *TopUpReqDTO) Validate() error {
 		dto,
 		validation.Field(&dto.Amount,
 			validation.Required,
-			validation.Min(1.00),       // memastikan amount positif dan lebih dari 0
-			validation.Max(9999999.99), // memastikan amount kurang dari 10,000,000
+			validation.Min(10000.00),  // memastikan amount positif dan lebih dari 0
+			validation.Max(999999.99), // memastikan amount kurang dari 10,000,000
 		),
 	); err != nil {
 		return err
