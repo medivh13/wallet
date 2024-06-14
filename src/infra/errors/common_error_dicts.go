@@ -1,6 +1,6 @@
 package errors
 
-// code for team internal error
+// code for team internal error (custom error)
 const (
 	DATA_INVALID               ErrorCode = 1001
 	INVALID_AMOUNT             ErrorCode = 1002
