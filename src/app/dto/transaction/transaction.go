@@ -29,7 +29,7 @@ func (dto *TransferReqDTO) Validate() error {
 	return nil
 }
 
-type GetTopTenRespDTO struct {
+type GetTopTransRespDTO struct {
 	UserName string  `json:"username"`
 	Amount   float64 `json:"amount"`
 }

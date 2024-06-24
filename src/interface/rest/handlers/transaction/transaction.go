@@ -105,7 +105,7 @@ func (h *transactionHandler) GetTopTen(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	data, err := h.usecase.GetTopTen(dataClaim.WalletID)
+	data, err := h.usecase.GetTopTransactionByUser(dataClaim.WalletID)
 
 	if err != nil {
 		h.response.HttpError(w, common_error.NewError(common_error.FAILED_RETRIEVE_DATA, err))

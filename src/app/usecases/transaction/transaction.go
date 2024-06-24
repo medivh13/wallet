@@ -13,7 +13,7 @@ import (
 
 type TransactionUCInterface interface {
 	Transfer(data *dto.TransferReqDTO) error
-	GetTopTen(walletID int64) ([]*dto.GetTopTenRespDTO, error)
+	GetTopTransactionByUser(walletID int64) ([]*dto.GetTopTransRespDTO, error)
 	GetOverallTopTransactions(ctx context.Context) ([]*dto.GetOverallRespDTO, error)
 }
 
@@ -38,8 +38,8 @@ func (uc *transactionUseCase) Transfer(data *dto.TransferReqDTO) error {
 	return nil
 }
 
-func (uc *transactionUseCase) GetTopTen(walletID int64) ([]*dto.GetTopTenRespDTO, error) {
-	resp, err := uc.Repo.GetTopTen(walletID)
+func (uc *transactionUseCase) GetTopTransactionByUser(walletID int64) ([]*dto.GetTopTransRespDTO, error) {
+	resp, err := uc.Repo.GetTopTransactionByUser(walletID)
 	if err != nil {
 		return resp, err
 	}

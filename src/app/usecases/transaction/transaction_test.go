@@ -67,14 +67,14 @@ func (u *TransactionUseCaseList) TestTransferFailed() {
 }
 
 func (u *TransactionUseCaseList) TestGetTopTenSuccess() {
-	u.mockRepo.Mock.On("GetTopTen", int64(3)).Return(mock.Anything, nil)
-	_, err := u.useCase.GetTopTen(int64(3))
+	u.mockRepo.Mock.On("GetTopTransactionByUser", int64(3)).Return(mock.Anything, nil)
+	_, err := u.useCase.GetTopTransactionByUser(int64(3))
 	u.Equal(nil, err)
 }
 
 func (u *TransactionUseCaseList) TestGetTopTenFailed() {
-	u.mockRepo.Mock.On("GetTopTen", int64(3)).Return(nil, errors.New(mock.Anything))
-	_, err := u.useCase.GetTopTen(int64(3))
+	u.mockRepo.Mock.On("GetTopTransactionByUser", int64(3)).Return(nil, errors.New(mock.Anything))
+	_, err := u.useCase.GetTopTransactionByUser(int64(3))
 	u.Equal(errors.New(mock.Anything), err)
 }
 

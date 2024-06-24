@@ -31,14 +31,14 @@ func (m *MockTransactionRepo) Transfer(data *dto.TransferReqDTO) error {
 	return err
 }
 
-func (m *MockTransactionRepo) GetTopTen(walletID int64) ([]*dto.GetTopTenRespDTO, error) {
+func (m *MockTransactionRepo) GetTopTransactionByUser(walletID int64) ([]*dto.GetTopTransRespDTO, error) {
 	args := m.Called(walletID)
 	var (
-		res []*dto.GetTopTenRespDTO
+		res []*dto.GetTopTransRespDTO
 		err error
 	)
 
-	if n, ok := args.Get(0).([]*dto.GetTopTenRespDTO); ok {
+	if n, ok := args.Get(0).([]*dto.GetTopTransRespDTO); ok {
 
 		res = n
 	}

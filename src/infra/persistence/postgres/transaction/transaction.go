@@ -11,7 +11,7 @@ import (
 
 type TransactionRepository interface {
 	Transfer(data *dto.TransferReqDTO) error
-	GetTopTen(walletID int64) ([]*dto.GetTopTenRespDTO, error)
+	GetTopTransactionByUser(walletID int64) ([]*dto.GetTopTransRespDTO, error)
 	GetOverallTopTransactions() ([]*dto.GetOverallRespDTO, error)
 }
 
@@ -49,7 +49,7 @@ const (
 	)
 	`
 
-	GetTopTenByUser = `SELECT 
+	GetTopTransactionByUser = `SELECT 
 	u.username,
     t.amount
 	FROM 
@@ -89,8 +89,8 @@ const (
 var statement PreparedStatement
 
 type PreparedStatement struct {
-	getTopTen  *sqlx.Stmt
-	getOverall *sqlx.Stmt
+	getTopTransaction *sqlx.Stmt
+	getOverall        *sqlx.Stmt
 }
 
 type transactionRepo struct {
@@ -116,8 +116,8 @@ func (p *transactionRepo) Preparex(query string) *sqlx.Stmt {
 
 func InitPreparedStatement(m *transactionRepo) {
 	statement = PreparedStatement{
-		getTopTen:  m.Preparex(GetTopTenByUser),
-		getOverall: m.Preparex(GetOverallTopTransactions),
+		getTopTransaction: m.Preparex(GetTopTransactionByUser),
+		getOverall:        m.Preparex(GetOverallTopTransactions),
 	}
 }
 
@@ -185,11 +185,11 @@ func (p *transactionRepo) Transfer(data *dto.TransferReqDTO) error {
 	return nil
 }
 
-func (p *transactionRepo) GetTopTen(walletID int64) ([]*dto.GetTopTenRespDTO, error) {
+func (p *transactionRepo) GetTopTransactionByUser(walletID int64) ([]*dto.GetTopTransRespDTO, error) {
 
-	var resultData []*dto.GetTopTenRespDTO
+	var resultData []*dto.GetTopTransRespDTO
 
-	err := statement.getTopTen.Select(&resultData, walletID)
+	err := statement.getTopTransaction.Select(&resultData, walletID)
 
 	if err != nil {
 		return nil, err
