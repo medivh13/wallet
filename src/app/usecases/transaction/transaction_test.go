@@ -103,14 +103,14 @@ func (u *TransactionUseCaseList) TestGetOveralFail() {
 	u.Equal(errors.New(mock.Anything), err)
 }
 
-func (u *TransactionUseCaseList) TestGetOveralSetDataRedisFail() {
-	ctx := context.Background()
-	u.mockRedis.Mock.On("GetData", ctx, u.key).Return("", errors.New(mock.Anything))
-	u.mockRepo.Mock.On("GetOverallTopTransactions").Return(mock.Anything, nil)
-	u.mockRedis.Mock.On("SetData", ctx, u.key, mock.Anything, time.Duration(2)*time.Minute).Return(errors.New(mock.Anything))
-	_, err := u.useCase.GetOverallTopTransactions(ctx)
-	u.Equal(errors.New(mock.Anything), err)
-}
+	func (u *TransactionUseCaseList) TestGetOveralSetDataRedisFail() {
+		ctx := context.Background()
+		u.mockRedis.Mock.On("GetData", ctx, u.key).Return("", errors.New(mock.Anything))
+		u.mockRepo.Mock.On("GetOverallTopTransactions").Return(mock.Anything, nil)
+		u.mockRedis.Mock.On("SetData", ctx, u.key, mock.Anything, time.Duration(2)*time.Minute).Return(errors.New(mock.Anything))
+		_, err := u.useCase.GetOverallTopTransactions(ctx)
+		u.Equal(errors.New(mock.Anything), err)
+	}
 func TestUsecase(t *testing.T) {
 	suite.Run(t, new(TransactionUseCaseList))
 }
